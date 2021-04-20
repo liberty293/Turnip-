@@ -6,6 +6,6 @@ public class Rain : MonoBehaviour
 {
     public void causeRain()
     {
-
+        this.GetComponent<ParticleSystem>().Play();
     }
 }
