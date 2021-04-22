@@ -6,17 +6,19 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public class CreateSave : MonoBehaviour
 {
-    public static void SaveTurnip(GameObject satisfaction)
+    public GameObject hunger;
+    public GameObject thirst;
+    public void SaveTurnip(GameObject satisfaction)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/turnip.turnip";
         FileStream stream = new FileStream(path, FileMode.Create);
-        SaveData data = new SaveData(satisfaction);
+        SaveData data = new SaveData(satisfaction, hunger, thirst);
 
         formatter.Serialize(stream, data);
         stream.Close();
     }
-    public static SaveData LoadTurnip()
+    public SaveData LoadTurnip()
     {
         string path = Application.persistentDataPath + "/turnip.turnip";
         if (File.Exists(path))
