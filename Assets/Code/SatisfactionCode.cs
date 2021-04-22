@@ -7,37 +7,50 @@ public class SatisfactionCode : MonoBehaviour
 {
     public UnityEngine.UI.Slider slide;
     public GameObject turnip;
-    private bool chomped;
+    public GameObject thirst;
+    public GameObject hunger;
+    public bool chomped = false;
     private IEnumerator slowlySat;
     private bool increasing;
+    public SaveData saveData;
     // Start is called before the first frame update
-    void Start()
+    void onAwaken()
     {
-        chomped = false;
+        slide.value = saveData.satisfaction;
+        chomped = saveData.chomped;
     }
 
     public void Feed(float amount)
     {
-        if (slide.value >= 1)
+        if (!increasing)
         {
-            Consume();
-        }
-        else
-        {
-            slowlySat = SlowlyIncSat(amount, 3, 2);//replace with animation duration
-            StartCoroutine(slowlySat);
+            increasing = true;
+            if (slide.value >= 1)
+            {
+                Consume();
+            }
+            else
+            {
+                slowlySat = SlowlyIncSat(amount, 3, 2);//replace with animation duration
+                hunger.GetComponent<Hunger>().Feed(amount);
+                StartCoroutine(slowlySat);
+            }
+            increasing = false;
         }
     }
     public void Water(float amount)
     {
-
-        slowlySat = SlowlyIncSat(amount, 6, 2);
-        StartCoroutine(slowlySat);
+        if (!increasing)
+        {
+            increasing = true;
+            slowlySat = SlowlyIncSat(amount, 6, 2);
+            thirst.GetComponent<Thirst>().Water(amount);
+            StartCoroutine(slowlySat);
+            increasing = false;
+        }
     }
     private IEnumerator SlowlyIncSat(float amount, float time, float delay)
     {
-        if (!increasing) {
-            increasing = true;
             float timeElapsed = 0;
             while (timeElapsed < delay)
             {
@@ -50,13 +63,9 @@ public class SatisfactionCode : MonoBehaviour
             {
                 timeElapsed = Mathf.Clamp(timeElapsed + Time.deltaTime, 0, time);
                 slide.value += Time.deltaTime * amount / time;
-                turnip.transform.localScale.Scale(new Vector3(1+Time.deltaTime,1+ Time.deltaTime, 1+ Time.deltaTime));
                 yield return null;
             }
-            increasing = false;
             turnip.GetComponent<MeshRenderer>().material = (Material) AssetDatabase.LoadAssetAtPath("Assets/TurnipModel/assets/face_textures/Materials/texture_default.mat", typeof(Material));
-        }
-
     }
     private void Consume()
     {
