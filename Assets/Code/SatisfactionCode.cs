@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.UI;
 
 public class SatisfactionCode : MonoBehaviour
 {
@@ -11,8 +12,10 @@ public class SatisfactionCode : MonoBehaviour
     public GameObject hunger;
     public bool chomped = false;
     private IEnumerator slowlySat;
-    private bool increasing;
+    private static bool increasing;
+    public GameObject rain;
     public SaveData saveData;
+    public GameObject image;
     // Start is called before the first frame update
     void onAwaken()
     {
@@ -35,18 +38,18 @@ public class SatisfactionCode : MonoBehaviour
                 hunger.GetComponent<Hunger>().Feed(amount);
                 StartCoroutine(slowlySat);
             }
-            increasing = false;
+
         }
     }
     public void Water(float amount)
     {
         if (!increasing)
         {
+            rain.GetComponent<ParticleSystem>().Play();
             increasing = true;
             slowlySat = SlowlyIncSat(amount, 6, 2);
             thirst.GetComponent<Thirst>().Water(amount);
             StartCoroutine(slowlySat);
-            increasing = false;
         }
     }
     private IEnumerator SlowlyIncSat(float amount, float time, float delay)
@@ -66,10 +69,14 @@ public class SatisfactionCode : MonoBehaviour
                 yield return null;
             }
             turnip.GetComponent<MeshRenderer>().material = (Material) AssetDatabase.LoadAssetAtPath("Assets/TurnipModel/assets/face_textures/Materials/texture_default.mat", typeof(Material));
+        if (slide.value >= 1)
+        {
+            image.GetComponent<Image>().sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/ui_2.png", typeof(Sprite));
+        }
+        increasing = false;
     }
     private void Consume()
     {
-        slide.value = 0;
         turnip.GetComponent<MeshRenderer>().material = (Material)AssetDatabase.LoadAssetAtPath("Assets/TurnipModel/assets/face_textures/Materials/texture_scared.mat", typeof(Material));
         //turnipAnimator.SetTrigger(getEaten);
         //turnip.GetComponent<MeshRenderer>().material = (Material)AssetDatabase.LoadAssetAtPath("Assets/TurnipModel/assets/face_textures/Materials/texture_dead.mat", typeof(Material));
