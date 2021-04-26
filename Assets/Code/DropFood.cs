@@ -25,7 +25,8 @@ public class DropFood : MonoBehaviour
         l2q = L2.transform.rotation;
         l3p = L3.transform.position;
         l3q = L3.transform.rotation;
-}
+        Plate.transform.position = new Vector3(Plate.transform.position.x, -10, Plate.transform.position.z);
+    }
     public void Drop()
     {
         Reset();
