@@ -56,7 +56,7 @@ public class Hunger : MonoBehaviour
             {
                 timeElapsed = Mathf.Clamp(timeElapsed + Time.deltaTime, 0, time);
                 slide.value += Time.deltaTime * amount / time;
-                if (timeElapsed >= 1.6)
+                if (timeElapsed >= 1.4)
                 {
                     drop.SetVis(2,false);
                 }
