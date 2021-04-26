@@ -8,14 +8,23 @@ public class CreateSave : MonoBehaviour
 {
     public GameObject hunger;
     public GameObject thirst;
+    public SaveData data;
+    public void WriteToFile()
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/turnip.turnip";
+        FileStream stream = new FileStream(path, FileMode.Create);
+        formatter.Serialize(stream, new SerialData(data));
+        stream.Close();
+    }
     public void SaveTurnip(GameObject satisfaction)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/turnip.turnip";
         FileStream stream = new FileStream(path, FileMode.Create);
-        SaveData data = new SaveData(satisfaction, hunger, thirst);
+        data.Save(satisfaction, hunger, thirst);
 
-        formatter.Serialize(stream, data);
+        formatter.Serialize(stream, new SerialData(data));
         stream.Close();
     }
     public SaveData LoadTurnip()
@@ -26,7 +35,7 @@ public class CreateSave : MonoBehaviour
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
 
-            SaveData data = formatter.Deserialize(stream) as SaveData;
+            data.Save(formatter.Deserialize(stream) as SerialData);
             stream.Close();
             return data;
         }

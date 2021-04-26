@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class Thirst : MonoBehaviour
 {
@@ -9,18 +10,27 @@ public class Thirst : MonoBehaviour
     private IEnumerator slowly;
     bool increasing = false;
     public SaveData saveData;
-    void onAwaken()
+    public GameObject turnip;
+    void Awake()
     {
         slide.value = saveData.thirst;
     }
     // Update is called once per frame
     void FixedUpdate()
     {
-        slide.value -= Time.deltaTime * thirstPerSec;
+        if (turnip.GetComponent<alive>().living) {
+            slide.value -= Time.deltaTime * thirstPerSec;
+            if (slide.value <= 0)
+            {
+                //malnourish
+                turnip.GetComponent<MeshRenderer>().material = (Material)AssetDatabase.LoadAssetAtPath("Assets/TurnipModel/assets/face_textures/Materials/texture_dead_malnourishment.mat", typeof(Material));
+                turnip.GetComponent<alive>().living = false;
+            }
+        }
     }
     public void Water(float amount)
     {
-        slowly = SlowlyInc(amount, 6, 2);
+        slowly = SlowlyInc(amount, 6, 2.4f);
         StartCoroutine(slowly);
     }
     private IEnumerator SlowlyInc(float amount, float time, float delay)
@@ -31,9 +41,10 @@ public class Thirst : MonoBehaviour
             float timeElapsed = 0;
             while (timeElapsed < delay)
             {
-                timeElapsed = Mathf.Clamp(timeElapsed + Time.deltaTime, 0, time);
+                timeElapsed = Mathf.Clamp(timeElapsed + Time.deltaTime, 0, delay);
                 yield return null;
             }
+            turnip.GetComponent<MeshRenderer>().material = (Material)AssetDatabase.LoadAssetAtPath("Assets/TurnipModel/assets/face_textures/Materials/texture_eating.mat", typeof(Material));
             timeElapsed = 0;
             while (timeElapsed < time)
             {
@@ -41,6 +52,7 @@ public class Thirst : MonoBehaviour
                 slide.value += Time.deltaTime * amount / time;
                 yield return null;
             }
+            turnip.GetComponent<MeshRenderer>().material = (Material)AssetDatabase.LoadAssetAtPath("Assets/TurnipModel/assets/face_textures/Materials/texture_default.mat", typeof(Material));
             increasing = false;
         }
 

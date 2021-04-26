@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 
 public class PullOutAndFall : MonoBehaviour
@@ -14,6 +15,8 @@ public class PullOutAndFall : MonoBehaviour
     [SerializeField]
     public float minT, maxT;
     private GameObject TurnipGroup;
+    public GameObject turnip;
+    public GameObject bitModel;
     BoxCollider bcollider;
     Rigidbody rbody;
     bool fall = false;
@@ -33,7 +36,7 @@ public class PullOutAndFall : MonoBehaviour
         rbody = GetComponent<Rigidbody>();
         bcollider = GetComponent<BoxCollider>();
         TurnipGroup = gameObject;
-        StartCoroutine(StartAnim());
+       // StartCoroutine(StartAnim());
     }
 
     IEnumerator StartAnim()
@@ -49,10 +52,11 @@ public class PullOutAndFall : MonoBehaviour
     void FixedUpdate()
     {
         if (!fall) return;
+        rbody.isKinematic = false;
         rbody.AddTorque(new Vector3(UnityEngine.Random.Range(minT, maxT), UnityEngine.Random.Range(minT, maxT), UnityEngine.Random.Range(minT, maxT)));
         rbody.AddForce(Vector3.down * speeddown) ;
     }
-    
+
     private IEnumerator PullAnim()
     {
         Debug.Log("I started");
@@ -64,7 +68,11 @@ public class PullOutAndFall : MonoBehaviour
             TurnipGroup.transform.Translate(Vector3.up, Space.World);
             yield return null;
         }
-
+        turnip.transform.Rotate(new Vector3(0,30,0));
+        TurnipGroup.transform.position = new Vector3(TurnipGroup.transform.position.x, TurnipGroup.transform.position.y, TurnipGroup.transform.position.z+3);
+        turnip.GetComponent<alive>().living = false;
+        turnip.GetComponent<MeshFilter>().mesh = bitModel.GetComponent<MeshFilter>().mesh;
+        turnip.GetComponent<MeshRenderer>().material = (Material)AssetDatabase.LoadAssetAtPath("Assets/TurnipModel/assets/face_textures/Materials/texture_dead.mat", typeof(Material));
 
     }
 }

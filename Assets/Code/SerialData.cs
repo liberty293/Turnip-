@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Save", order = 1), Serializable]
-public class SaveData : ScriptableObject
+[Serializable]
+public class SerialData
 {
     public float satisfaction;
     public float thirst;
@@ -18,12 +18,11 @@ public class SaveData : ScriptableObject
         thirst = thirstVal.GetComponent<UnityEngine.UI.Slider>().value;
         hunger = hungerVal.GetComponent<UnityEngine.UI.Slider>().value;
     }
-    public SaveData Save(SerialData save)
+    public SerialData(SaveData save)
     {
         satisfaction = save.satisfaction;
         chomped = save.chomped;
         thirst = save.thirst;
         hunger = save.hunger;
-        return this;
     }
 }
