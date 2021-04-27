@@ -13,6 +13,7 @@ public class Thirst : MonoBehaviour
     public GameObject turnip;
     void Awake()
     {
+        increasing = false;
         slide.value = saveData.thirst;
     }
     // Update is called once per frame

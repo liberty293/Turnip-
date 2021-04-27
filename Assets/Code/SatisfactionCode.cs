@@ -25,15 +25,26 @@ public class SatisfactionCode : MonoBehaviour
     {
         slide.value = saveData.satisfaction;
         chomped = saveData.chomped;
+        increasing = false;
+
         if (chomped) {
             turnip.transform.Rotate(new Vector3(0, 30, 0));
             turnip.GetComponent<alive>().living = false;
             turnip.GetComponent<MeshFilter>().mesh = bitModel.GetComponent<MeshFilter>().mesh;
             turnip.GetComponent<MeshRenderer>().material = (Material)AssetDatabase.LoadAssetAtPath("Assets/TurnipModel/assets/face_textures/Materials/texture_dead.mat", typeof(Material));
         }
+        else if(hunger.GetComponent<Hunger>().slide.value >= 0 && thirst.GetComponent<Thirst>().slide.value >= 0)
+        {
+            turnip.GetComponent<alive>().living = true;
+        }
+        if (slide.value >= 1)
+        {
+            image.GetComponent<Image>().sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/ui_2.png", typeof(Sprite));
+        }
     }
     public void Feed(float amount)
     {
+        Debug.Log(turnip.GetComponent<alive>().living);
         if (!increasing && turnip.GetComponent<alive>().living)
         {
             increasing = true;
@@ -86,6 +97,7 @@ public class SatisfactionCode : MonoBehaviour
     private void Consume()
     {
         turnip.GetComponent<MeshRenderer>().material = (Material)AssetDatabase.LoadAssetAtPath("Assets/TurnipModel/assets/face_textures/Materials/texture_scared.mat", typeof(Material));
+        music = GameObject.FindGameObjectsWithTag("Music")[0];
         music.GetComponent<AudioSource>().mute = true;
         turnipAnimator.Play("Pulled");
         chomped = true;

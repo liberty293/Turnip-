@@ -31,7 +31,7 @@ public class BackToMenu : MonoBehaviour
     }
     public void toMenu()
     {
-        Debug.Log(Application.persistentDataPath);
+
         StartCoroutine(Sleepy());
     }
     IEnumerator Sleepy()

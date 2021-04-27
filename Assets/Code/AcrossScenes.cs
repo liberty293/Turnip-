@@ -5,17 +5,30 @@ using UnityEngine;
 public class AcrossScenes : MonoBehaviour
 {
     public AudioSource music;
-    static bool started = false;
-    private void Start()
-    {
-        if (!started)
-        {
-            music.Play();
-            started = true;
-        }
-    }
+    public static bool started = false;
+    private bool old = false;
+    public SaveData save;
+
     private void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
+        if (!started) {
+            DontDestroyOnLoad(this.gameObject);
+            music.Play();
+            music.mute = save.chomped;
+            started = true;
+            old = true;
+            GameObject[] other = GameObject.FindGameObjectsWithTag("Music");
+            foreach (GameObject otherPlayer in other)
+            {
+                if (!otherPlayer.Equals(this.gameObject))
+                {
+                    Destroy(otherPlayer);
+                }
+            }
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

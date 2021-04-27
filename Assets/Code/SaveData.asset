@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d05fd4f2022fab1439da2be39912a2d1, type: 3}
   m_Name: SaveData
   m_EditorClassIdentifier: 
-  satisfaction: 0.80315554
-  thirst: 0.77035034
-  hunger: 0.9236711
+  satisfaction: 0
+  thirst: 1
+  hunger: 1
   chomped: 0

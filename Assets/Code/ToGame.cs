@@ -16,6 +16,7 @@ public class ToGame : MonoBehaviour
             data.thirst = 1;
             data.hunger = 1;
             data.satisfaction = 0;
+            AcrossScenes.started = false;
         }
         SceneManager.LoadScene("SampleScene");
     }

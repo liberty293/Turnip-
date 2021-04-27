@@ -17,6 +17,7 @@ public class Hunger : MonoBehaviour
     protected bool alive = true;
     void Awake()
     {
+        increasing = false;
         slide.value = saveData.hunger;
     }
     // Update is called once per frame
