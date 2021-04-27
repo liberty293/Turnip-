@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: SaveData
   m_EditorClassIdentifier: 
   satisfaction: 0
-  thirst: 1
-  hunger: 1
+  thirst: 0.75043297
+  hunger: 0.50074196
   chomped: 0
