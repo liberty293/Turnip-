@@ -32,7 +32,7 @@ public class PullOutAndFall : MonoBehaviour
     }
     private void Start()
     {
- 
+//        TurnipAnim.Play("Pulled");
         rbody = GetComponent<Rigidbody>();
         bcollider = GetComponent<BoxCollider>();
         TurnipGroup = gameObject;
@@ -61,6 +61,7 @@ public class PullOutAndFall : MonoBehaviour
     {
         Debug.Log("I started");
         TurnipAnim.Play("Pulled");
+        yield return new WaitUntil(() => TurnipAnim.GetCurrentAnimatorStateInfo(0).IsName("Pulled"));
         yield return new WaitWhile(() => TurnipAnim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1);
         TurnipAnim.enabled = false;
         while (TurnipGroup.transform.position.y < OffScreenHeight)

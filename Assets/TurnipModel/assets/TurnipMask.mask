@@ -1,0 +1,117 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TurnipMask
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Ground
+    m_Weight: 0
+  - m_Path: history
+    m_Weight: 0
+  - m_Path: history/BitTurnip
+    m_Weight: 0
+  - m_Path: history/Food2
+    m_Weight: 0
+  - m_Path: history/Food3
+    m_Weight: 0
+  - m_Path: history/group
+    m_Weight: 0
+  - m_Path: history/group30
+    m_Weight: 0
+  - m_Path: history/group31
+    m_Weight: 0
+  - m_Path: history/Leaves
+    m_Weight: 0
+  - m_Path: history/MedLeaf
+    m_Weight: 0
+  - m_Path: history/pasted__TurnipBody4
+    m_Weight: 0
+  - m_Path: history/pCylinder5
+    m_Weight: 0
+  - m_Path: history/pCylinder5/transform105
+    m_Weight: 0
+  - m_Path: history/persp1
+    m_Weight: 0
+  - m_Path: Mountain
+    m_Weight: 0
+  - m_Path: Plate
+    m_Weight: 1
+  - m_Path: Plate/Food1
+    m_Weight: 1
+  - m_Path: Plate/pasted__Food1
+    m_Weight: 1
+  - m_Path: Plate/pasted__Food2
+    m_Weight: 1
+  - m_Path: TurnipGroup
+    m_Weight: 0
+  - m_Path: TurnipGroup/armL
+    m_Weight: 0
+  - m_Path: TurnipGroup/armR
+    m_Weight: 0
+  - m_Path: TurnipGroup/BIK_handle
+    m_Weight: 0
+  - m_Path: TurnipGroup/BLeaf
+    m_Weight: 0
+  - m_Path: TurnipGroup/Bleaf
+    m_Weight: 0
+  - m_Path: TurnipGroup/Bleaf/joint2
+    m_Weight: 0
+  - m_Path: TurnipGroup/Bleaf/joint2/joint3
+    m_Weight: 0
+  - m_Path: TurnipGroup/Bleaf/joint2/joint3/joint4
+    m_Weight: 0
+  - m_Path: TurnipGroup/Bleaf/joint2/joint3/joint4/joint5
+    m_Weight: 0
+  - m_Path: TurnipGroup/Bleaf/joint2/joint3/joint4/joint5/joint6
+    m_Weight: 0
+  - m_Path: TurnipGroup/Bleaf/joint2/joint3/joint4/joint5/joint6/joint7
+    m_Weight: 0
+  - m_Path: TurnipGroup/Bleaf/joint2/joint3/joint4/joint5/joint6/joint7/joint8
+    m_Weight: 0
+  - m_Path: TurnipGroup/Bleaf/joint2/joint3/joint4/joint5/joint6/joint7/joint8/joint9
+    m_Weight: 0
+  - m_Path: TurnipGroup/medLeaf
+    m_Weight: 0
+  - m_Path: TurnipGroup/MIK_handle
+    m_Weight: 0
+  - m_Path: TurnipGroup/Mleaf
+    m_Weight: 0
+  - m_Path: TurnipGroup/Mleaf/joint18
+    m_Weight: 0
+  - m_Path: TurnipGroup/Mleaf/joint18/joint19
+    m_Weight: 0
+  - m_Path: TurnipGroup/Mleaf/joint18/joint19/joint20
+    m_Weight: 0
+  - m_Path: TurnipGroup/Mleaf/joint18/joint19/joint20/joint21
+    m_Weight: 0
+  - m_Path: TurnipGroup/Mleaf/joint18/joint19/joint20/joint21/joint22
+    m_Weight: 0
+  - m_Path: TurnipGroup/Mleaf/joint18/joint19/joint20/joint21/joint22/joint23
+    m_Weight: 0
+  - m_Path: TurnipGroup/SIK_handle
+    m_Weight: 0
+  - m_Path: TurnipGroup/Sleaf
+    m_Weight: 0
+  - m_Path: TurnipGroup/Sleaf/joint11
+    m_Weight: 0
+  - m_Path: TurnipGroup/Sleaf/joint11/joint12
+    m_Weight: 0
+  - m_Path: TurnipGroup/Sleaf/joint11/joint12/joint13
+    m_Weight: 0
+  - m_Path: TurnipGroup/Sleaf/joint11/joint12/joint13/joint14
+    m_Weight: 0
+  - m_Path: TurnipGroup/Sleaf/joint11/joint12/joint13/joint14/joint15
+    m_Weight: 0
+  - m_Path: TurnipGroup/Sleaf/joint11/joint12/joint13/joint14/joint15/joint16
+    m_Weight: 0
+  - m_Path: TurnipGroup/smLeaf
+    m_Weight: 0
+  - m_Path: TurnipGroup/TurnipBody2
+    m_Weight: 0
