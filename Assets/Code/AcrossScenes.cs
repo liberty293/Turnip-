@@ -6,7 +6,6 @@ public class AcrossScenes : MonoBehaviour
 {
     public AudioSource music;
     public static bool started = false;
-    private bool old = false;
     public SaveData save;
 
     private void Awake()
@@ -16,7 +15,6 @@ public class AcrossScenes : MonoBehaviour
             music.Play();
             music.mute = save.chomped;
             started = true;
-            old = true;
             GameObject[] other = GameObject.FindGameObjectsWithTag("Music");
             foreach (GameObject otherPlayer in other)
             {

@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 
 public class Hunger : MonoBehaviour
 {
@@ -28,14 +27,14 @@ public class Hunger : MonoBehaviour
             if (slide.value <= 0)
             {
                 //malnourish
-                turnip.GetComponent<MeshRenderer>().material = (Material)AssetDatabase.LoadAssetAtPath("Assets/TurnipModel/assets/face_textures/Materials/texture_dead_malnourishment.mat", typeof(Material));
+                turnip.GetComponent<MeshRenderer>().material = Resources.Load<Material>("texture_dead_malnourishment");
                 turnip.GetComponent<alive>().living = false;
             }
         }
     }
     public void Feed(float amount)
     {
-        slowly = SlowlyInc(amount, 2.5f, 2.7f);
+        slowly = SlowlyInc(amount, 1.8f, 2.7f);
         StartCoroutine(slowly);
     }
     private IEnumerator SlowlyInc(float amount, float time, float delay)
@@ -50,7 +49,7 @@ public class Hunger : MonoBehaviour
                 timeElapsed = Mathf.Clamp(timeElapsed + Time.deltaTime, 0, delay);
                 yield return null;
             }
-            turnip.GetComponent<MeshRenderer>().material = (Material)AssetDatabase.LoadAssetAtPath("Assets/TurnipModel/assets/face_textures/Materials/texture_begin_eat.mat", typeof(Material));
+            turnip.GetComponent<MeshRenderer>().material = Resources.Load<Material>("texture_begin_eat");
             anim.Play("Leaf1");
             timeElapsed = 0;
             while (timeElapsed < time)
@@ -71,10 +70,10 @@ public class Hunger : MonoBehaviour
                 }
                 yield return null;
             }
-            turnip.GetComponent<MeshRenderer>().material = (Material)AssetDatabase.LoadAssetAtPath("Assets/TurnipModel/assets/face_textures/Materials/texture_eating.mat", typeof(Material));
+            turnip.GetComponent<MeshRenderer>().material = Resources.Load<Material>("texture_eating");
             slideL = drop.slideLeft();
             yield return StartCoroutine(slideL);
-            turnip.GetComponent<MeshRenderer>().material = (Material)AssetDatabase.LoadAssetAtPath("Assets/TurnipModel/assets/face_textures/Materials/texture_default.mat", typeof(Material));
+            turnip.GetComponent<MeshRenderer>().material = Resources.Load<Material>("texture_default");
             increasing = false;
             drop.Remove();
         }

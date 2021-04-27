@@ -59,7 +59,6 @@ public class PullOutAndFall : MonoBehaviour
 
     private IEnumerator PullAnim()
     {
-        Debug.Log("I started");
         TurnipAnim.Play("Pulled");
         yield return new WaitUntil(() => TurnipAnim.GetCurrentAnimatorStateInfo(0).IsName("Pulled"));
         yield return new WaitWhile(() => TurnipAnim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1);
@@ -73,7 +72,7 @@ public class PullOutAndFall : MonoBehaviour
         TurnipGroup.transform.position = new Vector3(TurnipGroup.transform.position.x, TurnipGroup.transform.position.y, TurnipGroup.transform.position.z+3);
         turnip.GetComponent<alive>().living = false;
         turnip.GetComponent<MeshFilter>().mesh = bitModel.GetComponent<MeshFilter>().mesh;
-        turnip.GetComponent<MeshRenderer>().material = (Material)AssetDatabase.LoadAssetAtPath("Assets/TurnipModel/assets/face_textures/Materials/texture_dead.mat", typeof(Material));
+        turnip.GetComponent<MeshRenderer>().material = Resources.Load<Material>("texture_dead");
 
     }
 }

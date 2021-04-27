@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 using UnityEngine.UI;
 
 public class SatisfactionCode : MonoBehaviour
@@ -31,7 +30,7 @@ public class SatisfactionCode : MonoBehaviour
             turnip.transform.Rotate(new Vector3(0, 30, 0));
             turnip.GetComponent<alive>().living = false;
             turnip.GetComponent<MeshFilter>().mesh = bitModel.GetComponent<MeshFilter>().mesh;
-            turnip.GetComponent<MeshRenderer>().material = (Material)AssetDatabase.LoadAssetAtPath("Assets/TurnipModel/assets/face_textures/Materials/texture_dead.mat", typeof(Material));
+            turnip.GetComponent<MeshRenderer>().material = Resources.Load<Material>("texture_dead");
         }
         else if(hunger.GetComponent<Hunger>().slide.value >= 0 && thirst.GetComponent<Thirst>().slide.value >= 0)
         {
@@ -39,12 +38,11 @@ public class SatisfactionCode : MonoBehaviour
         }
         if (slide.value >= 1)
         {
-            image.GetComponent<Image>().sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/ui_2.png", typeof(Sprite));
+            image.GetComponent<Image>().sprite = Resources.Load<Sprite>("ui_2");
         }
     }
     public void Feed(float amount)
     {
-        Debug.Log(turnip.GetComponent<alive>().living);
         if (!increasing && turnip.GetComponent<alive>().living)
         {
             increasing = true;
@@ -54,7 +52,7 @@ public class SatisfactionCode : MonoBehaviour
             }
             else
             {
-                slowlySat = SlowlyIncSat(amount, 4, 2.7f);//replace with animation duration
+                slowlySat = SlowlyIncSat(amount, 4f, 2.7f);//replace with animation duration
                 hunger.GetComponent<Hunger>().Feed(amount);
                 StartCoroutine(slowlySat);
             }
@@ -90,13 +88,13 @@ public class SatisfactionCode : MonoBehaviour
             //turnip.GetComponent<MeshRenderer>().material = (Material) AssetDatabase.LoadAssetAtPath("Assets/TurnipModel/assets/face_textures/Materials/texture_default.mat", typeof(Material));
         if (slide.value >= 1)
         {
-            image.GetComponent<Image>().sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/ui_2.png", typeof(Sprite));
+            image.GetComponent<Image>().sprite = Resources.Load<Sprite>("ui_2");
         }
         increasing = false;
     }
     private void Consume()
     {
-        turnip.GetComponent<MeshRenderer>().material = (Material)AssetDatabase.LoadAssetAtPath("Assets/TurnipModel/assets/face_textures/Materials/texture_scared.mat", typeof(Material));
+        turnip.GetComponent<MeshRenderer>().material = Resources.Load<Material>("texture_scared");
         music = GameObject.FindGameObjectsWithTag("Music")[0];
         music.GetComponent<AudioSource>().mute = true;
         turnipAnimator.Play("Pulled");

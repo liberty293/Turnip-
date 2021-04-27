@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,8 +15,10 @@ public class BackToMenu : MonoBehaviour
     public Animator anim;
     public void WriteToFile()
     {
-        data.Save(satisfaction, hunger, thirst);
-        EditorUtility.SetDirty(data);
+        data.satisfaction = satisfaction.GetComponent<UnityEngine.UI.Slider>().value;
+        data.chomped = satisfaction.GetComponent<SatisfactionCode>().chomped;
+        data.thirst = thirst.GetComponent<UnityEngine.UI.Slider>().value;
+        data.hunger = hunger.GetComponent<UnityEngine.UI.Slider>().value;
         if (data.chomped)
         {
             BinaryFormatter formatter = new BinaryFormatter();
@@ -38,7 +39,7 @@ public class BackToMenu : MonoBehaviour
     {
         if (turnip.GetComponent<alive>().living) {
             anim.Play("Drop Into Ground");
-            turnip.GetComponent<MeshRenderer>().material = (Material)AssetDatabase.LoadAssetAtPath("Assets/TurnipModel/assets/face_textures/Materials/texture_uwu.mat", typeof(Material));
+            turnip.GetComponent<MeshRenderer>().material = Resources.Load<Material>("texture_uwu");
             yield return new WaitForSecondsRealtime(1.2f);
         }
         WriteToFile();

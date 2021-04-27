@@ -5114,7 +5114,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.93}
   m_AnchorMax: {x: 0.263, y: 0.99}
-  m_AnchoredPosition: {x: -4.4000244, y: 4}
+  m_AnchoredPosition: {x: -4.4000244, y: 4.0000153}
   m_SizeDelta: {x: -8, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &517319453
@@ -5854,7 +5854,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b184f0ea7fca1ae4fb2ee4376264559a, type: 2}
+  - {fileID: 2100000, guid: 31f57f66dd3d6754c83c237460a60c70, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5891,8 +5891,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 860725906}
   m_LocalRotation: {x: -0, y: 0.083000034, z: -0, w: 0.99654955}
-  m_LocalPosition: {x: -72.7, y: 21.8, z: -176.6}
-  m_LocalScale: {x: -94.9, y: 1, z: -191.59}
+  m_LocalPosition: {x: -31.5, y: 21.8, z: -181.2}
+  m_LocalScale: {x: 180, y: 1, z: -191.59}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -7346,7 +7346,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.374, y: 0.02}
   m_AnchorMax: {x: 0.463, y: 0.158}
-  m_AnchoredPosition: {x: 0.19998169, y: -1.1999817}
+  m_AnchoredPosition: {x: 0.19998169, y: -1.1999512}
   m_SizeDelta: {x: 0, y: -2.0299683}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1859272551
@@ -7490,7 +7490,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b184f0ea7fca1ae4fb2ee4376264559a, type: 2}
+  - {fileID: 2100000, guid: 605b65952fdae284aaec09bf6f5e73f1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7527,8 +7527,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1863215570}
   m_LocalRotation: {x: -0, y: 0.083000034, z: -0, w: 0.99654955}
-  m_LocalPosition: {x: -10.9, y: 21.8, z: 193}
-  m_LocalScale: {x: -94.9, y: 1, z: -191.59}
+  m_LocalPosition: {x: 28.3, y: 21.8, z: 185}
+  m_LocalScale: {x: 180, y: 1, z: -191.59}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8

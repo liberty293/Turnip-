@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 
 public class Thirst : MonoBehaviour
 {
@@ -24,7 +23,7 @@ public class Thirst : MonoBehaviour
             if (slide.value <= 0)
             {
                 //malnourish
-                turnip.GetComponent<MeshRenderer>().material = (Material)AssetDatabase.LoadAssetAtPath("Assets/TurnipModel/assets/face_textures/Materials/texture_dead_malnourishment.mat", typeof(Material));
+                turnip.GetComponent<MeshRenderer>().material = Resources.Load<Material>("texture_dead_malnourishment");
                 turnip.GetComponent<alive>().living = false;
             }
         }
@@ -45,7 +44,7 @@ public class Thirst : MonoBehaviour
                 timeElapsed = Mathf.Clamp(timeElapsed + Time.deltaTime, 0, delay);
                 yield return null;
             }
-            turnip.GetComponent<MeshRenderer>().material = (Material)AssetDatabase.LoadAssetAtPath("Assets/TurnipModel/assets/face_textures/Materials/texture_eating.mat", typeof(Material));
+            turnip.GetComponent<MeshRenderer>().material = Resources.Load<Material>("texture_eating");
             timeElapsed = 0;
             while (timeElapsed < time)
             {
@@ -53,7 +52,7 @@ public class Thirst : MonoBehaviour
                 slide.value += Time.deltaTime * amount / time;
                 yield return null;
             }
-            turnip.GetComponent<MeshRenderer>().material = (Material)AssetDatabase.LoadAssetAtPath("Assets/TurnipModel/assets/face_textures/Materials/texture_default.mat", typeof(Material));
+            turnip.GetComponent<MeshRenderer>().material = Resources.Load<Material>("texture_default");
             increasing = false;
         }
 

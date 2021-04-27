@@ -56,7 +56,7 @@ public class DropFood : MonoBehaviour
     }
     public IEnumerator slideLeft()
     {
-        while (Plate.transform.position.z > -68)
+        while (Plate.transform.position.z > -60)
         {
             Plate.transform.position = new Vector3(Plate.transform.position.x, Plate.transform.position.y, Plate.transform.position.z - Time.deltaTime*40);
             yield return null;
